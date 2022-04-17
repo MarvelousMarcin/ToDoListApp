@@ -67,12 +67,20 @@ nav{
     padding: 7px;
     border-radius: 10px;
 }
-
 .container {
     width: 25vw;
-    height: 20vh;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
     margin-left: auto;
     margin-right: auto;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.welcome-text {
+    font-size: 40px;
 }
 
 .add-task {
@@ -110,7 +118,7 @@ nav{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 350px;
+    height: 400px;
     padding: 40px;
 }
 
@@ -131,7 +139,7 @@ nav{
     background: #E2B714;
     width: 0px;
     height: 3px;
-    transition: all .4s ease-in;
+    transition: all .2s ease-in;
 }
 
 .menu ul li:hover::after{
@@ -180,7 +188,6 @@ nav{
     flex-direction: row;
     justify-content:space-between;
     width: 70px;
-
 }
 
 .task {

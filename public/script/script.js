@@ -13,6 +13,7 @@ const addMenu = document.querySelector('.add-task-form');
 const logo = document.querySelector('.logo');
 const menuButton = document.querySelector('.fi-rr-menu-burger');
 const menuElement = document.querySelector('.menu');
+const welcomeText = document.querySelector('.welcome-text');
 
 let allTasks = '';
 
@@ -21,7 +22,6 @@ class Task {
         this.id = id;
         this.name = name;
         this.isCompleted = isCompleted;
-        
     }
 
 };
@@ -48,7 +48,7 @@ const getAllTasks = async () => {
 
 const printAllTasks = async () => {
 
-    tasksConteinter.textContent = '';
+    tasksConteinter.textContent = "";
     
     tasks.forEach(task => {
         const name = task.name;
@@ -175,7 +175,7 @@ const showMenu = () => {
             return;
         }
 
-        const timer = setInterval(onTick, 300);
+        const timer = setInterval(onTick, 200);
 
         let char = 0;
     
@@ -208,15 +208,65 @@ const menuFuncAnimation = () => {
             document.documentElement.style.setProperty('--under_width', this.offsetWidth);
         });
     });
-
-
-
 };
+
+const welcomeTextAnimation = () => {
+    const textValue = welcomeText.textContent;
+    welcomeText.textContent = "";
+    
+    let findSign = false;
+    textValue.split('').forEach(letter => {
+        let html = '';
+        if(letter === '.') {
+            html = `<span class="welcome-text-span dots">${letter}</span>`;
+        } else if(letter === ',') {
+            findSign = true;
+        } else if(findSign) {
+            html = `<span class="welcome-text-span name-letter">${letter}</span>`;
+        } else {
+            html = `<span class="welcome-text-span">${letter}</span>`;
+        }
+
+        welcomeText.insertAdjacentHTML("beforeend", html);
+    });
+
+    const nameLetters = document.querySelectorAll('.name-letter');
+    nameLetters.forEach(letter => {
+        letter.style.color = "#E2B714";
+    })
+
+    const lettersArray = document.querySelectorAll('.dots');
+
+    const timer = setInterval(onTick, 300);
+
+    let char = 0;
+    
+    function onTick(){
+
+        
+        if(char === 0) {
+            lettersArray[char].style.opacity = "0";
+            lettersArray[lettersArray.length -1].style.opacity = "1";
+        } else {
+            lettersArray[char].style.opacity = "0";
+            lettersArray[char - 1].style.opacity = "1";
+        }
+        
+        char++;
+    
+        if(char === lettersArray.length){
+            char = 0;
+        }
+    };
+    
+};
+
 
 
 getAllTasks();
 animateLogo();
 menuFuncAnimation();
 showMenu();
+welcomeTextAnimation();
 
 
