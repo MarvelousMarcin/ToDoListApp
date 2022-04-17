@@ -20,7 +20,7 @@ body {
 
 nav{
     width: 100%;
-    height: 70px;
+    height: 10vh;
     background-color: #323437;
     display: flex;
     align-items: center;
@@ -55,19 +55,61 @@ nav{
 }
 
 .container {
-    width: 25vw;
-    height: 50vh;
+    width: 70vw;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    align-items: center;
     text-align: center;
     justify-content: center;
 }
 
+/*TASK STYLING*/
+
+.tasks {
+    position: absolute;
+    display: none;
+    height: 50vh;
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.task {
+    padding: 30px;
+    margin: 20px;
+    border: 3px solid #E2B714;
+    width: 200px;
+    display: inline-block;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.task:hover {
+    border: 3px solid #C7C7BD;
+}
+
+.task-text {
+    color:#eeeeee;
+    font-size: 1.2rem;
+}
+
+.task-name {
+    font-weight: 800;
+    letter-spacing: 2px;
+    color:#E2B714;
+}
+
+
 .welcome-text {
-    font-size: 40px;
+    font-size: 55px;
+    transition: all .7s ease;
+    margin-bottom: 15vh;
 }
 
 .fi-rr-menu-burger {

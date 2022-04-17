@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
+    "gsap": "^3.10.3",
+    "interactjs": "^1.10.11",
     "mongoose": "^6.3.0"
   },
   "devDependencies": {

@@ -11,6 +11,9 @@ const logo = document.querySelector('.logo');
 const menuButton = document.querySelector('.fi-rr-menu-burger');
 const menuElement = document.querySelector('.menu');
 const welcomeText = document.querySelector('.welcome-text');
+const todolist = document.querySelector('.todolist-func');
+const mainPage = document.querySelector('.main-page-func');
+const tasksElem = document.querySelector('.tasks');
 
 let allTasks = '';
 
@@ -21,9 +24,6 @@ class Task {
         this.isCompleted = isCompleted;
     }
 };
-
-let tasks = [];
-let pickedTask = '';
 
 const animateLogo = () => {
     const logoValue = logo.textContent;
@@ -101,7 +101,7 @@ const menuFuncAnimation = () => {
 
     menuFun.forEach(func => {
         func.addEventListener('mouseenter', function() {
-            document.documentElement.style.setProperty('--under_width', this.offsetWidth);
+            document.documentElement.style.setProperty('--under_width', this.offsetWidth -2);
         });
     });
 };
@@ -133,7 +133,7 @@ const welcomeTextAnimation = () => {
 
     const lettersArray = document.querySelectorAll('.dots');
 
-    const timer = setInterval(onTick, 300);
+    setInterval(onTick, 300);
 
     let char = 0;
     
@@ -157,11 +157,37 @@ const welcomeTextAnimation = () => {
     
 };
 
+const mainPageApp = () => {
+    const moveDown= () => {
+        welcomeText.style.transform = "translateY(0)";
+    }
+    mainPage.addEventListener('click', function(event){
+        tasksElem.style.display = "none";
+        moveDown();
+    });
+}
 
+const toDoListApp = () => {
+
+    const moveUp = () => {
+        gsap.to(welcomeText, {duration: .1,ease: "none", y: -250});
+    }
+
+    todolist.addEventListener('click', async function(event){
+        moveUp();
+        tasksElem.style.display = "block";
+    });
+
+
+
+
+}
 
 animateLogo();
 menuFuncAnimation();
 showMenu();
 welcomeTextAnimation();
+toDoListApp();
+mainPageApp();
 
 
