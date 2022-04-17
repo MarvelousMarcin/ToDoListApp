@@ -155,21 +155,53 @@ const showMenu = () => {
 
     menuButton.addEventListener('mouseenter', function() {
         this.style.color = "#E2B714";
+        this.style.transform = "scale(1.2)";
     });
 
     menuButton.addEventListener('mouseleave', function() {
         this.style.color = "#eeeeee";
+        this.style.transform = "scale(1)";
     });
 
     menuButton.addEventListener('click', function() {
-        console.log(menuElement.classList);
         menuElement.classList.toggle('menu-visible');
+
+        const menuFun = document.querySelectorAll('.menu-func');
+
+        if(!menuElement.classList.contains('menu-visible')) {
+            menuFun.forEach(func => {
+                func.style.opacity = '0';
+            });
+            return;
+        }
+
+        const timer = setInterval(onTick, 300);
+
+        let char = 0;
+    
+        function onTick(){
+            const oneFun = menuFun[char];
+            console.log(oneFun);
+            oneFun.style.opacity = '1';
+            char++;
+    
+            if(char === menuFun.length){
+                complete();
+                return;
+            }
+    
+        };
+    
+        function complete() {
+            clearInterval(timer);
+        }
     });
 };
 
 const menuFuncAnimation = () => {
     const menuFun = document.querySelectorAll('.menu-func');
     document.documentElement.style.setProperty('--under_width', '0px');
+
 
     menuFun.forEach(func => {
         func.addEventListener('mouseenter', function() {
