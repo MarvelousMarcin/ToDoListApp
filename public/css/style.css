@@ -30,8 +30,6 @@ nav{
     margin-bottom: 40px;
 }
 
-
-
 .menu-icon{
     font-size: 30px;
     transition: all .1s ease-in;
@@ -56,37 +54,11 @@ nav{
     cursor: pointer;
 }
 
-.error {
-    color: red;
-    opacity: 0;
-    transition: all ease .5s;
-}
-
-.input {
-    border: 1px solid #888888;
-    padding: 7px;
-    border-radius: 10px;
-}
-
 .container {
     width: 25vw;
     height: 20vh;
     margin-left: auto;
     margin-right: auto;
-}
-
-.add-task {
-    display: flex;
-    flex-direction: column;
-}
-
-.add-task-form-button {
-    padding: 7px;
-    background-color: blueviolet;
-    width: 80px;
-    border: 0;    
-    border-radius: 10rem;
-    cursor: pointer;
 }
 
 .fi-rr-menu-burger {
@@ -138,8 +110,6 @@ nav{
     width: var(--under_width);
 }
 
-
-
 .menu ul li:hover{
     cursor: pointer;
 }
@@ -148,97 +118,7 @@ nav{
     transform: translateX(0%);
 }
 
-.fi-br-check {
-    font-size: 20px;
-    color: rgb(51, 216, 51);
-    transition: all .1s ease-in;
-}
-
-.fi-br-check:hover {
-    transform: scale(1.1);
-}
-
 .fi-bs-angle-right
 {
     color: white;
-
 }
-
-
-.fi-br-cross {
-    font-size: 20px;
-    color: red;
-    transition: all .1s ease-in;
-}
-
-.fi-br-cross:hover {
-    transform: scale(1.1);
-}
-
-.funct {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    width: 70px;
-
-}
-
-.task {
-    padding: 3px;
-    margin: 20px 0 20px 0;
-    border: 2px solid #242121;
-    background-color: #333;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all ease-in .5s;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-}
-
-.info {
-    width: 250px;
-}
-
-.add-task-form {
-    position: absolute;
-    top: 25%;
-    left: 3%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: space-between;
-    height: 23%;
-    margin-bottom: 20px;
-    transform: translateX(-200%);
-    transition: all .4s ease-in;
-}
-
-.add-task-form-visible {
-    transform: translateX(20%);
-}
-
-.form-text {
-    color: #eeeeee;
-}
-input[type="checkbox"] {
-    appearance: none;
-    background-color: #fff;
-    margin: 0;
-    font: inherit;
-    color: currentColor;
-    width: 1.15em;
-    height: 1.15em;
-    border: 0.15em solid currentColor;
-    border-radius: 0.15em;
-    transform: translateY(-0.075em);
-  }
-
-  input[type="text"] {
-    color: #222222;
-  }
-
-
-
