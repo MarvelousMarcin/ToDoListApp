@@ -25,6 +25,7 @@ class Task {
     }
 };
 
+
 const animateLogo = () => {
     const logoValue = logo.textContent;
     logo.textContent = "";
@@ -130,31 +131,6 @@ const welcomeTextAnimation = () => {
     nameLetters.forEach(letter => {
         letter.style.color = "#E2B714";
     })
-
-    const lettersArray = document.querySelectorAll('.dots');
-
-    setInterval(onTick, 300);
-
-    let char = 0;
-    
-    function onTick(){
-
-        
-        if(char === 0) {
-            lettersArray[char].style.opacity = "0";
-            lettersArray[lettersArray.length -1].style.opacity = "1";
-        } else {
-            lettersArray[char].style.opacity = "0";
-            lettersArray[char - 1].style.opacity = "1";
-        }
-        
-        char++;
-    
-        if(char === lettersArray.length){
-            char = 0;
-        }
-    };
-    
 };
 
 const mainPageApp = () => {
@@ -162,7 +138,7 @@ const mainPageApp = () => {
         welcomeText.style.transform = "translateY(0)";
     }
     mainPage.addEventListener('click', function(event){
-        tasksElem.style.display = "none";
+        tasksElem.style.transform = "scale(0)";
         moveDown();
     });
 }
@@ -170,17 +146,13 @@ const mainPageApp = () => {
 const toDoListApp = () => {
 
     const moveUp = () => {
-        gsap.to(welcomeText, {duration: .1,ease: "none", y: -250});
+        tasksElem.style.transform = "scale(1)";
+        welcomeText.style.transform = "translateY(-15rem)";
     }
-
+    
     todolist.addEventListener('click', async function(event){
         moveUp();
-        tasksElem.style.display = "block";
     });
-
-
-
-
 }
 
 animateLogo();
