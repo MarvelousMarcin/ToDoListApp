@@ -84,6 +84,11 @@ label:hover {
 
 }
 
+.logo {
+    font-size: 50px;
+
+}
+
 .fi {
     font-size: 40px;
     overflow: hidden;

@@ -37,7 +37,7 @@ nav{
 
 .logo {
     color: #eeeeee;
-    font-size: 33px;
+    font-size: 50px;
     letter-spacing: 2px;
     display: flex;
 }
@@ -134,8 +134,12 @@ nav{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 400px;
+    height: 550px;
     padding: 40px;
+}
+
+a {
+    text-decoration: none;
 }
 
 .menu-func {
@@ -144,7 +148,7 @@ nav{
 }
 
 .menu ul li{
-    font-size: 20px;
+    font-size: 25px;
     text-decoration: none;
     font-weight: 800;
 }

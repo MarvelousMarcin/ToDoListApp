@@ -3,7 +3,7 @@ const Task = require('../models/Task')
 
 const taskRoute = express.Router();
 
-taskRoute.get('', (req, res) => {
+taskRoute.get('/', (req, res) => {
     res.render('login', {})
 });
 
