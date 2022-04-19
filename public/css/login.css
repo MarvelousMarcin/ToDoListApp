@@ -85,7 +85,7 @@ label:hover {
 }
 
 .fi {
-    font-size: 30px;
+    font-size: 40px;
     overflow: hidden;
     transition: all .5s ease;
 }
@@ -96,10 +96,6 @@ label:hover {
     cursor: pointer;
 }
 
-
 .login input{
     background-color: none;
-}
-
-.password {
 }

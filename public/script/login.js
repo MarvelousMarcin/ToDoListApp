@@ -65,8 +65,9 @@ loginButton.addEventListener('click', async () => {
         })
     });
     const data = await response.json();
+    console.log(data);
     if(response.ok) {
-        //TODo
+        location.href = `/mainpage/${data.name}`;
     } else {
     }
 

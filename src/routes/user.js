@@ -15,9 +15,11 @@ userRoute.post('/usercreate', async (req, res) => {
     }
 });
 
-userRoute.get('/mainpage', async (req, res) => {
-    res.render('main');
+userRoute.get('/mainpage/:user', async (req, res) => {
+    const user = req.params.user;
+    res.render('main', {name: user});
 });
+
 
 userRoute.post('/userlogin', async (req, res) => {
     const reqBody = req.body;
