@@ -1,0 +1,105 @@
+.main {
+    width: 70vw;
+    height: 70vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: re;
+}
+
+/*
+Dark : #323437
+Yellow: #E2B714
+White: #C7C7BD
+*/
+
+.hello-text {
+    font-size: 2.6rem;
+}
+
+.textAnim {
+    color: #E2B714;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    padding: 10px;
+    text-align: center;
+}
+
+.login {
+    padding: 30px;
+}
+
+label {
+    color: #C7C7BD;
+    font-size: 1.8rem;
+}
+
+label:hover {
+    color: #eeeeee;
+}
+
+#textInput {
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #E2B714;
+    width: 500px;
+}
+
+#passwordInput {
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #E2B714;
+    width: 500px;
+}
+
+.pic1 {
+    display: block;
+    position: absolute;
+    transform: scale(.3) translateX(-115%);
+    filter: invert(83%) sepia(8%) saturate(211%) hue-rotate(22deg) brightness(96%) contrast(90%);
+
+}
+
+.pic2 {
+    display: block;
+    position: absolute;
+    transform: scale(.3) translateX(115%);
+    filter: invert(83%) sepia(8%) saturate(211%) hue-rotate(22deg) brightness(96%) contrast(90%);
+
+}
+
+.fi {
+    font-size: 30px;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+
+.fi:hover {
+    color: #E2B714;
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+
+.login input{
+    background-color: none;
+}
+
+.password {
+}

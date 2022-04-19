@@ -4,7 +4,7 @@ const Task = require('../models/Task')
 const taskRoute = express.Router();
 
 taskRoute.get('', (req, res) => {
-    res.send('index');
+    res.render('login', {})
 });
 
 taskRoute.post('/task', async (req, res) => {

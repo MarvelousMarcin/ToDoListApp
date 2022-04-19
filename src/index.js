@@ -1,14 +1,21 @@
 const express = require('express');
-const Task = require('./models/Task');
+const hbs = require('hbs');
+const path = require('path');
 require('./mongoose/mongoose');
 
+const app = express();
+const publicDir = path.join(__dirname, '../public');
 const port = process.env.PORT | 3000;
 
-const app = express();
-const taskRoute = require('./routes/task');
+app.set('view engine', 'hbs');
+app.set('views', publicDir);
 
-app.use(express.static('public'))
+const taskRoute = require('./routes/task');
+const userRoute = require('./routes/user');
+
+app.use(express.static(publicDir))
 app.use(express.json());
 app.use(taskRoute);
+app.use(userRoute);
 
 app.listen(port, () => console.log(`App is running on port ${port}`));

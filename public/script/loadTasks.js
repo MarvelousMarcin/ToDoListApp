@@ -7,7 +7,6 @@ const loadTasks = async function() {
     const response = await fetch('http://localhost:3000/task');
     const data = await response.json();
     data.forEach(task => {
-        console.log(task);
 
         const html = ` 
         <div class="task">

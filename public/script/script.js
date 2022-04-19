@@ -35,7 +35,6 @@ const animateLogo = () => {
     });
 
     const logoLetter = document.querySelectorAll('.logo-letter');
-    console.log(logoLetter);
     logoLetter.forEach(letter => {
         letter.addEventListener('mouseenter', function(event) {
             this.style.transition = "all .1s ease-in"
@@ -78,7 +77,6 @@ const showMenu = () => {
     
         function onTick(){
             const oneFun = menuFun[char];
-            console.log(oneFun);
             oneFun.style.opacity = '1';
             char++;
     
