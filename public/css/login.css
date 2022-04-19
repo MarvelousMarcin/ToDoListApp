@@ -86,7 +86,6 @@ label:hover {
 
 .logo {
     font-size: 50px;
-
 }
 
 .fi {
@@ -103,4 +102,32 @@ label:hover {
 
 .login input{
     background-color: none;
+}
+
+.clock {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    font-size: 50px;
+    color: #C7C7BD;
+}
+footer {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+    display: flex;
+    flex-direction: row;
+    width: 15%;
+    height: 100px;
+    justify-content: space-evenly;
+}
+
+img.socials{
+    width: 40px;
+    transition:all .3s ease-in-out;
+}
+
+img.socials:hover{
+    transform: scale(1.2);
+    cursor: pointer;
 }
