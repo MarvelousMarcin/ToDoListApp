@@ -54,9 +54,24 @@ loginButton.addEventListener("click", async () => {
   const email = emailInput.value;
   const password = passwordInput.value;
 
-  document.cookie = "test:Marcin Maciag";
+  const body = JSON.stringify({
+    email,
+    password,
+  });
 
-  await fetch("http://localhost:3000/test");
+  const response = await fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body,
+  });
+  console.log("test");
+  const data = await response.json();
+
+  document.cookie = data;
+
+  location.href = "/mainPage";
 });
 
 animateLogo();

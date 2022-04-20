@@ -6,6 +6,8 @@ const {
 } = require("../validate/validateUser");
 const userRoute = express.Router();
 const bcrypy = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const auth = require("./auth");
 
 // Registration
 userRoute.post("/register", async (req, res) => {
@@ -34,7 +36,6 @@ userRoute.post("/register", async (req, res) => {
 // Login
 userRoute.post("/login", async (req, res) => {
   const { error } = userValidateLogin.validate(req.body);
-
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
@@ -45,11 +46,17 @@ userRoute.post("/login", async (req, res) => {
   }
 
   const match = await bcrypy.compare(req.body.password, user.password);
-  if (match) {
-    res.status(200).send(user);
-  } else {
-    res.status(400).send({ error: "Wrong password or email" });
+  if (!match) {
+    return res.status(400).send({ error: "Wrong password or email" });
   }
+
+  const token = jwt.sign({ _id: user._id }, "TOBESECRET");
+
+  res.status(200).send(JSON.stringify(token));
+});
+
+userRoute.get("/mainPage", auth, async (req, res) => {
+  res.render("main");
 });
 
 module.exports = userRoute;
