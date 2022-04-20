@@ -1,10 +1,10 @@
 "use strict";
 
-const loginWelcome = document.querySelector(".hello-text");
+const nameInput = document.querySelector(".nameInput");
+const emailInput = document.querySelector(".emailInput");
+const passwordInput = document.querySelector(".passwordInput");
 const logo = document.querySelector(".logo");
-const loginButton = document.querySelector(".fi-rr-angle-right");
-const emailInput = document.querySelector("#textInput");
-const passwordInput = document.querySelector("#passwordInput");
+const button = document.querySelector(".registerBut");
 
 const animateLogo = () => {
   const logoValue = logo.textContent;
@@ -32,11 +32,10 @@ const textAnimation = (text, color, speed) => {
   text.textContent = "";
   letters.split("").forEach((letter) => {
     const html = `<span class="${color} hidden">${letter}</span>`;
-    loginWelcome.insertAdjacentHTML("beforeend", html);
+    text.insertAdjacentHTML("beforeend", html);
   });
 
   const lettersWithSpan = document.querySelectorAll(`.${color}`);
-
   const timer = setInterval(onTick, speed);
 
   let char = 0;
@@ -50,16 +49,13 @@ const textAnimation = (text, color, speed) => {
   }
 };
 
-loginButton.addEventListener("click", async () => {
-  const email = emailInput.value;
+const readData = async function () {
+  const name = nameInput.value;
   const password = passwordInput.value;
-
-  const body = JSON.stringify({
-    email,
-    password,
-  });
-
-  const response = await fetch("http://localhost:3000/login", {
+  const email = emailInput.value;
+  const body = JSON.stringify({ name, password, email });
+  console.log(body);
+  const response = await fetch("http://localhost:3000/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -67,20 +63,10 @@ loginButton.addEventListener("click", async () => {
     body,
   });
 
-  const data = await response.json();
-
   if (response.ok) {
-    document.cookie = data;
-    location.href = "/mainPage";
+    location.href = "/";
   } else {
-    emailInput.value = "";
-    passwordInput.value = "";
-
-    loginWelcome.textContent = "You made a mistake?";
-    loginWelcome.style.color = "red";
-    textAnimation(loginWelcome, "wrongText", 40);
   }
-});
-
+};
+button.addEventListener("click", readData);
 animateLogo();
-textAnimation(loginWelcome, "textAnim", 90);

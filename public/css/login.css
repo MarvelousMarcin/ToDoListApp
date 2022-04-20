@@ -7,7 +7,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  position: re;
 }
 
 /*
@@ -24,8 +23,17 @@ White: #C7C7BD
   color: #e2b714;
 }
 
+.wrongText {
+  color: red;
+}
+
 .hidden {
   opacity: 0;
+}
+
+.stra {
+  transform: scale(0.4);
+  position: absolute;
 }
 
 #login-form {

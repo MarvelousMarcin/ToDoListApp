@@ -1,0 +1,39 @@
+.main {
+  width: 70vw;
+  height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 25px;
+}
+
+.pic1 {
+  display: block;
+  position: absolute;
+  top: 0px;
+  transform: scale(0.3) translateX(-115%);
+  filter: invert(83%) sepia(8%) saturate(211%) hue-rotate(22deg) brightness(96%)
+    contrast(90%);
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 4rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+input {
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #e2b714;
+}
