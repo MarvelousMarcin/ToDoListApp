@@ -1,38 +1,54 @@
 const express = require("express");
 const User = require("../models/User");
-var path = require("path");
-
+const {
+  userValidateRegister,
+  userValidateLogin,
+} = require("../validate/validateUser");
 const userRoute = express.Router();
+const bcrypy = require("bcrypt");
 
-userRoute.post("/usercreate", async (req, res) => {
-  const reqBody = req.body;
-  try {
-    const user = new User(reqBody);
-    await user.save();
-  } catch (error) {
-    res.status(500).send(error);
+// Registration
+userRoute.post("/register", async (req, res) => {
+  const { error } = userValidateRegister.validate(req.body);
+
+  if (error) {
+    return res.status(400).send(error.details[0].message);
   }
+
+  const saltRounds = 10;
+  bcrypy.hash(req.body.password, saltRounds, async function (err, hash) {
+    if (err) {
+      return res.status(400).send(err);
+    }
+    req.body.password = hash;
+    const user = new User(req.body);
+    try {
+      await user.save();
+      res.status(200).send(user);
+    } catch (error) {
+      res.status(400).send(error);
+    }
+  });
 });
 
-userRoute.get("/mainpage/:user", async (req, res) => {
-  const user = req.params.user;
-  res.render("main", { name: user });
-});
+// Login
+userRoute.post("/login", async (req, res) => {
+  const { error } = userValidateLogin.validate(req.body);
 
-userRoute.post("/userlogin", async (req, res) => {
-  const reqBody = req.body;
-  const providedPassword = reqBody.password;
-  const user = await User.findByMail(reqBody.email);
-  if (user == null) {
-    res.status(500).send({ error: "Wrong" });
-    return;
+  if (error) {
+    return res.status(400).send(error.details[0].message);
   }
-  const realPassword = user.password;
 
-  if (providedPassword === realPassword) {
+  const user = await User.findByMail(req.body.email);
+  if (user === null) {
+    return res.status(400).send({ error: "Wrong password or email" });
+  }
+
+  const match = await bcrypy.compare(req.body.password, user.password);
+  if (match) {
     res.status(200).send(user);
   } else {
-    res.status(500).send({ error: "Wrong" });
+    res.status(400).send({ error: "Wrong password or email" });
   }
 });
 
