@@ -39,7 +39,6 @@ userRoute.post("/login", async (req, res) => {
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
-
   const user = await User.findByMail(req.body.email);
   if (user === null) {
     return res.status(400).send({ error: "Wrong password or email" });
@@ -51,7 +50,6 @@ userRoute.post("/login", async (req, res) => {
   }
 
   const token = jwt.sign({ _id: user._id }, "TOBESECRET");
-
   res.status(200).send(JSON.stringify(token));
 });
 

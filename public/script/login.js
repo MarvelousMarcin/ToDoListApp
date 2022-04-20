@@ -66,12 +66,11 @@ loginButton.addEventListener("click", async () => {
     },
     body,
   });
-  console.log("test");
   const data = await response.json();
-
-  document.cookie = data;
-
-  location.href = "/mainPage";
+  if (response.ok) {
+    document.cookie = data;
+    location.href = "/mainPage";
+  }
 });
 
 animateLogo();
