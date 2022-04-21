@@ -176,3 +176,7 @@ img.socials:hover {
   cursor: pointer;
   opacity: 1;
 }
+
+i {
+  color: #c7c7bd;
+}

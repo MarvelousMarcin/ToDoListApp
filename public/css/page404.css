@@ -1,0 +1,14 @@
+.pic {
+  display: block;
+  transform: scale(0.4);
+  filter: invert(83%) sepia(8%) saturate(211%) hue-rotate(22deg) brightness(96%)
+    contrast(90%);
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100vw;
+}

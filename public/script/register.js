@@ -54,7 +54,6 @@ const readData = async function () {
   const password = passwordInput.value;
   const email = emailInput.value;
   const body = JSON.stringify({ name, password, email });
-  console.log(body);
   const response = await fetch("http://localhost:3000/register", {
     method: "POST",
     headers: {
@@ -68,5 +67,6 @@ const readData = async function () {
   } else {
   }
 };
+
 button.addEventListener("click", readData);
 animateLogo();
