@@ -1,7 +1,9 @@
 const jwt = require("jsonwebtoken");
 
 const auth = function (req, res, next) {
-  const token = req.headers.cookie;
+  let token = req.headers.cookie;
+  token = token.substring(token.indexOf("=") + 1);
+
   if (!token) return res.redirect("/");
 
   try {

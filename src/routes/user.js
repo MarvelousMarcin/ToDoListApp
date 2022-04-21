@@ -12,7 +12,6 @@ const auth = require("./auth");
 // Registration
 userRoute.post("/register", async (req, res) => {
   const { error } = userValidateRegister.validate(req.body);
-  console.log(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }

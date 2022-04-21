@@ -2,7 +2,7 @@
 
 const loginWelcome = document.querySelector(".hello-text");
 const logo = document.querySelector(".logo");
-const loginButton = document.querySelector(".fi-rr-angle-right");
+const loginButton = document.querySelector(".fi-sr-play");
 const emailInput = document.querySelector("#textInput");
 const passwordInput = document.querySelector("#passwordInput");
 
@@ -70,7 +70,7 @@ loginButton.addEventListener("click", async () => {
   const data = await response.json();
 
   if (response.ok) {
-    document.cookie = data;
+    document.cookie = `jwtToDoList=${data}`;
     location.href = "/mainPage";
   } else {
     emailInput.value = "";
@@ -79,6 +79,18 @@ loginButton.addEventListener("click", async () => {
     loginWelcome.textContent = "You made a mistake?";
     loginWelcome.style.color = "red";
     textAnimation(loginWelcome, "wrongText", 40);
+  }
+});
+
+emailInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    passwordInput.focus();
+  }
+});
+
+passwordInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    loginButton.click();
   }
 });
 
