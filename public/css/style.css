@@ -131,3 +131,60 @@ main {
 .hidden {
   opacity: 0;
 }
+
+.inner-circle {
+  width: 30vw;
+  height: 30vw;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #e2b714;
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-color: transparent;
+}
+
+.start-timer {
+  position: absolute;
+  top: 1vh;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  border: 2px solid #c7c7bd;
+  padding: 10px;
+  border-radius: 20px;
+  width: 150px;
+  transition: all 0.3s ease;
+}
+
+.start-timer:hover {
+  width: 170px;
+  border: 2px solid #e2b714;
+  cursor: pointer;
+}
+
+.time {
+  color: red;
+}
+
+.minutes {
+  background: none;
+  border: none;
+  width: 8vw;
+  text-align: center;
+  outline: none;
+  font-size: 4rem;
+}
+
+.seconds {
+  background: none;
+  border: none;
+  width: 8vw;
+  text-align: center;
+  outline: none;
+  font-size: 4rem;
+}

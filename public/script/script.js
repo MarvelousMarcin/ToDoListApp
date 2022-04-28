@@ -5,6 +5,10 @@ const logo = document.querySelector(".logo");
 const tasksElem = document.querySelector(".tasks");
 const logout = document.querySelector(".logout");
 const welcome = document.querySelector(".welcome");
+const pomodoro = document.querySelector(".pomodoro-func");
+const startPomodoro = document.querySelector(".start-timer");
+const minutes = document.querySelector(".minutes");
+const seconds = document.querySelector(".seconds");
 
 const animateLogo = () => {
   const logoValue = logo.textContent;
@@ -59,6 +63,41 @@ function hideWelcome() {
   welcome.style.display = "none";
 }
 
-setInterval(hideWelcome, 3000);
-textAnimation(welcome, "white", 80);
+function showPomodoro() {}
+
+startPomodoro.addEventListener("click", () => {
+  let count = "";
+  if (startPomodoro.textContent === "Start") {
+    startPomodoro.textContent = "Stop";
+    const minutesValue = Number(minutes.value);
+    const secondsValue = Number(seconds.value);
+    minutes.disabled = true;
+    seconds.disabled = true;
+    let sec = minutesValue * 60 + secondsValue;
+
+    const countDown = function () {
+      sec--;
+
+      let minutesToShow = Math.floor(sec / 60);
+      if (minutesToShow < 10) minutesToShow = "0" + minutesToShow;
+      let secondsToShow = sec - 60 * Math.floor(sec / 60);
+      if (secondsToShow < 10) secondsToShow = "0" + secondsToShow;
+
+      if (minutesToShow === "00" && secondsToShow === "00") {
+        clearInterval(count);
+      }
+
+      minutes.value = minutesToShow;
+      seconds.value = secondsToShow;
+    };
+    count = setInterval(countDown, 1000);
+  } else {
+    startPomodoro.textContent = "Resume";
+    clearInterval(count);
+  }
+});
+
+pomodoro.addEventListener("click", showPomodoro);
+
+//setInterval(hideWelcome, 3000);
 animateLogo();

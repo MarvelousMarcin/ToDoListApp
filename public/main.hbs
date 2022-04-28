@@ -20,12 +20,21 @@
         <div class="left">
         </div>
         <div class="middle">
-            <div class="welcome">Hey, {{name}}💖</div>
+            {{!-- <div class="welcome">Hey, {{name}}💖</div> --}}
+            <span class="inner-circle">
+                <button class="start-timer">Start</button>
+                <div class="time">
+                    <input class="minutes" value="60" maxlength="2"></div>
+                    :
+                    <input class="seconds" value="00" maxlength="2"></div>
+                </div>
+            </span>
+
         </div>
         <div class="menu">
             <ul>
                 <li class="menu-func main-page-func"><i class="fi fi-rr-home"></i></li>
-                <li class="menu-func todolist-func"><i class="fi fi-rr-rocket"></i></li>
+                <li class="menu-func pomodoro-func"><i class="fi fi-rr-rocket"></i></li>
                 <li class="menu-func"><i class="fi fi-rr-chart-histogram"></i></li>
                 <li class="menu-func"><i class="fi fi-rr-settings"></i></li>
                 <li class="menu-func logout"><i class="fi fi-rr-sign-out"></i></a></li>
