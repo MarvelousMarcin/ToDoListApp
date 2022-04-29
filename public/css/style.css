@@ -161,6 +161,21 @@ main {
   transition: all 0.3s ease;
 }
 
+.warning {
+  position: absolute;
+  bottom: 10vh;
+  font-size: 1.5rem;
+  color: red;
+  display: none;
+}
+
+.motivation {
+  position: absolute;
+  bottom: 13vh;
+  font-size: 2rem;
+  display: none;
+}
+
 .start-timer:hover {
   width: 170px;
   border: 2px solid #e2b714;
@@ -174,7 +189,7 @@ main {
 .minutes {
   background: none;
   border: none;
-  width: 8vw;
+  width: 5vw;
   text-align: center;
   outline: none;
   font-size: 4rem;
@@ -183,8 +198,15 @@ main {
 .seconds {
   background: none;
   border: none;
-  width: 8vw;
+  width: 5vw;
   text-align: center;
   outline: none;
   font-size: 4rem;
+}
+
+.pic3 {
+  display: block;
+  transform: scale(2.9) translateX(45%);
+  filter: invert(83%) sepia(8%) saturate(211%) hue-rotate(22deg) brightness(96%)
+    contrast(90%);
 }

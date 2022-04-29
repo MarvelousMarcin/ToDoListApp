@@ -1,14 +1,21 @@
 "use strict";
 
-const addTaskButton = document.querySelector(".add-task-form-button");
 const logo = document.querySelector(".logo");
-const tasksElem = document.querySelector(".tasks");
 const logout = document.querySelector(".logout");
-const welcome = document.querySelector(".welcome");
 const pomodoro = document.querySelector(".pomodoro-func");
 const startPomodoro = document.querySelector(".start-timer");
 const minutes = document.querySelector(".minutes");
 const seconds = document.querySelector(".seconds");
+const warning = document.querySelector(".warning");
+const motivation = document.querySelector(".motivation");
+
+const motivationMessages = [
+  "Good Job!",
+  "Keep working!",
+  "You're doing great!",
+  "Fantastic!",
+  "Focus!",
+];
 
 let timeLeft = null;
 
@@ -48,6 +55,14 @@ const loadSession = async function () {
 const countDown = function (stop) {
   timeLeft--;
 
+  if (timeLeft % 30 === 0) {
+    const randomNumber = Math.trunc(Math.random() * motivationMessages.length);
+    motivation.textContent = motivationMessages[randomNumber];
+    motivation.style.display = "block";
+  } else if (timeLeft % 10 === 0) {
+    motivation.textContent = "";
+  }
+
   let minutesToShow = Math.floor(timeLeft / 60);
   if (minutesToShow < 10) minutesToShow = "0" + minutesToShow;
   let secondsToShow = timeLeft - 60 * Math.floor(timeLeft / 60);
@@ -79,9 +94,16 @@ startPomodoro.addEventListener("click", async function () {
     return;
   }
 
-  startPomodoro.textContent = "Reset";
   const minutesValue = Number(minutes.value);
   const secondsValue = Number(seconds.value);
+
+  if (minutesValue <= 0 || secondsValue < 0) {
+    return (warning.style.display = "block");
+  }
+
+  warning.style.display = "none";
+  startPomodoro.textContent = "Reset";
+
   minutes.disabled = true;
   seconds.disabled = true;
   timeLeft = minutesValue * 60 + secondsValue;
@@ -154,5 +176,4 @@ function hideWelcome() {
 
 loadSession();
 
-//setInterval(hideWelcome, 3000);
 animateLogo();
