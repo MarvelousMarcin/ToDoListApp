@@ -7,6 +7,10 @@ generalRoute.get("/", (req, res) => {
   res.render("login");
 });
 
+generalRoute.get("/pomodoro", (req, res) => {
+  res.render("pomodoro");
+});
+
 generalRoute.post("/addSession", auth, async (req, res) => {
   const userId = req.user._id;
   const time = req.body.time;
