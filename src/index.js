@@ -13,11 +13,13 @@ app.set("views", publicDir);
 const taskRoute = require("./routes/task");
 const userRoute = require("./routes/user");
 const generalRoute = require("./routes/general");
+const finalSessionRoute = require("./routes/session");
 
 app.use(express.static(publicDir));
 app.use(express.json());
 app.use(taskRoute);
 app.use(userRoute);
 app.use(generalRoute);
+app.use(finalSessionRoute);
 
 app.listen(port, () => console.log(`App is running on port ${port}`));

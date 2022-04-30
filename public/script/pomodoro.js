@@ -47,18 +47,20 @@ const loadSession = async function () {
 
     Counter.start();
   } else {
+    minutes.focus();
     minutes.value = "60";
     seconds.value = "00";
   }
 };
 
-const countDown = function (stop) {
+const countDown = async function (stop) {
   timeLeft--;
 
   if (timeLeft % 30 === 0) {
     const randomNumber = Math.trunc(Math.random() * motivationMessages.length);
     motivation.textContent = motivationMessages[randomNumber];
     motivation.style.display = "block";
+    textAnimation(motivation, "basicClass", 150);
   } else if (timeLeft % 10 === 0) {
     motivation.textContent = "";
   }
@@ -68,18 +70,43 @@ const countDown = function (stop) {
   let secondsToShow = timeLeft - 60 * Math.floor(timeLeft / 60);
   if (secondsToShow < 10) secondsToShow = "0" + secondsToShow;
 
-  if (minutesToShow === "00" && secondsToShow === "00") {
-    Counter.stop();
-  }
-
   minutes.value = minutesToShow;
   seconds.value = secondsToShow;
+
+  if (minutesToShow === "00" && secondsToShow === "00") {
+    Counter.stop();
+
+    await fetch("http://localhost:3000/deleteSession", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    await fetch("http://localhost:3000/finalsession", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 };
 
 startPomodoro.addEventListener("click", async function () {
   if (this.textContent === "Reset") {
+    motivation.textContent = "";
     this.textContent = "Start";
-    const response = await fetch("http://localhost:3000/deleteSession", {
+    await fetch("http://localhost:3000/finalsession", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        time: timeLeft,
+      }),
+    });
+
+    await fetch("http://localhost:3000/deleteSession", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -87,26 +114,43 @@ startPomodoro.addEventListener("click", async function () {
     });
 
     Counter.stop();
-    minutes.value = "00";
+    minutes.value = "60";
     seconds.value = "00";
     minutes.disabled = false;
     seconds.disabled = false;
+    minutes.focus();
     return;
   }
 
   const minutesValue = Number(minutes.value);
   const secondsValue = Number(seconds.value);
 
-  if (minutesValue <= 0 || secondsValue < 0) {
+  if (
+    minutesValue < 0 ||
+    secondsValue < 0 ||
+    (minutesValue === 0 && secondsValue === 0)
+  ) {
     return (warning.style.display = "block");
   }
 
+  motivation.textContent = "";
   warning.style.display = "none";
   startPomodoro.textContent = "Reset";
 
   minutes.disabled = true;
   seconds.disabled = true;
   timeLeft = minutesValue * 60 + secondsValue;
+
+  await fetch("http://localhost:3000/finalsession", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      time: timeLeft,
+      date: Date.now(),
+    }),
+  });
 
   await fetch("http://localhost:3000/addSession", {
     method: "POST",

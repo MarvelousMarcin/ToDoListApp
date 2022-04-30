@@ -189,7 +189,7 @@ main {
 .minutes {
   background: none;
   border: none;
-  width: 5vw;
+  width: 5.6vw;
   text-align: center;
   outline: none;
   font-size: 4rem;
@@ -198,7 +198,7 @@ main {
 .seconds {
   background: none;
   border: none;
-  width: 5vw;
+  width: 5.6vw;
   text-align: center;
   outline: none;
   font-size: 4rem;
@@ -209,4 +209,8 @@ main {
   transform: scale(2.9) translateX(45%);
   filter: invert(83%) sepia(8%) saturate(211%) hue-rotate(22deg) brightness(96%)
     contrast(90%);
+}
+
+.basicClass {
+  color: #e2b714;
 }

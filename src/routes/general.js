@@ -7,8 +7,16 @@ generalRoute.get("/", (req, res) => {
   res.render("login");
 });
 
-generalRoute.get("/pomodoro", (req, res) => {
+generalRoute.get("/pomodoro", auth, (req, res) => {
   res.render("pomodoro");
+});
+
+generalRoute.get("/music", auth, (req, res) => {
+  res.render("music");
+});
+
+generalRoute.get("/sessionlist", auth, (req, res) => {
+  res.render("sessionList");
 });
 
 generalRoute.post("/addSession", auth, async (req, res) => {
@@ -52,8 +60,8 @@ generalRoute.delete("/deleteSession", auth, async (req, res) => {
   }
 });
 
-generalRoute.get("/*", (req, res) => {
-  res.render("page404");
-});
+// generalRoute.get("/*", (req, res) => {
+//   res.render("page404");
+// });
 
 module.exports = generalRoute;

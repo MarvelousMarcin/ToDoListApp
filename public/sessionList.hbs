@@ -8,6 +8,7 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sessionlist.css">
 
 </head>
 <body>
@@ -16,18 +17,26 @@
         <div class="logo">Listfy</div>  
     </nav>
 
+    <div class="submenu">
+        <div class="title subopt">Change title</div>
+        <div class="delete subopt">Delete</div>
+    </div>
+
     <main>
         <div class="left">
+            <img class="pic3" src="./img/DrawKit Larry Character Illustration (6).svg">
         </div>
         <div class="middle">
-            <div class="welcome">Hey, {{name}}💖</div>
-       
+            <div class="sessions">
+                
+                <div class="navig"> <- -></div>
+            </div>
         </div>
         <div class="menu">
             <ul>
                 <li class="menu-func main-page-func"><a href="/mainPage"><i class="fi fi-rr-home"></i></a></li>
                 <li class="menu-func pomodoro-func"><a href="/pomodoro"><i class="fi fi-rr-rocket"></i></a></li>
-                <li class="menu-func sessionlist"><a href="/sessionlist"><i class="fi fi-rr-chart-histogram"></i></a></li>
+                <li class="menu-func"><i class="fi fi-rr-chart-histogram"></i></li>
                 <li class="menu-func"><i class="fi fi-rr-settings"></i></li>
                 <li class="menu-func music"><a href="/music"><i class="fi fi-rr-music"></i></a></li>
                 <li class="menu-func logout"><i class="fi fi-rr-sign-out"></i></a></li>
@@ -35,9 +44,8 @@
         </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
-    <script src="/script/main.js" type="module"></script>
     <script src="/script/time.js"></script>
-
+    <script src="/script/sessionList.js"></script>
 
 
 </body>

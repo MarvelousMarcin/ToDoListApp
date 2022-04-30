@@ -1,0 +1,56 @@
+/*
+Dark : #323437
+Yellow: #E2B714
+White: #C7C7BD
+*/
+
+.sessions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 80vh;
+  width: 50vw;
+}
+
+.session {
+  background: #c7c7bd;
+  padding: 1.3rem;
+  width: 30vw;
+  border-radius: 4%;
+  transition: all 2s ease;
+}
+
+.session:hover {
+  background: #e2b714;
+  padding: 1.3rem;
+  width: 30vw;
+  border-radius: 4%;
+  cursor: pointer;
+}
+
+.sessText {
+  color: #323437;
+  font-size: 1.6rem;
+}
+
+.navig {
+  font-size: 2rem;
+}
+
+.submenu {
+  background: #c7c7bd;
+  border: 2px solid #323437;
+  padding: 20px;
+  position: absolute;
+  height: 19vh;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.subopt {
+  color: #323437;
+  border-bottom: 1px solid #323437;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
