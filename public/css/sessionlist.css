@@ -2,12 +2,20 @@
 Dark : #323437
 Yellow: #E2B714
 White: #C7C7BD
+Purpl: #C164CF
+Purpl2: #95549e
+Purpl3: #6744a1
+Red: #e4002b
+Pink: #c53562
+Black: #101820
+White: #eedaea
+Blue: 
 */
 
 .sessions {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   height: 80vh;
   width: 50vw;
@@ -19,6 +27,7 @@ White: #C7C7BD
   width: 30vw;
   border-radius: 4%;
   transition: all 2s ease;
+  margin-bottom: 30px;
 }
 
 .session:hover {
@@ -40,17 +49,46 @@ White: #C7C7BD
 
 .submenu {
   background: #c7c7bd;
-  border: 2px solid #323437;
   padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   position: absolute;
-  height: 19vh;
+  height: 25vh;
   transform: scale(0);
   transition: transform 0.3s ease;
+  border-radius: 5%;
+  z-index: 3;
 }
 
 .subopt {
   color: #323437;
-  border-bottom: 1px solid #323437;
   margin-bottom: 1.5rem;
-  font-size: 1.4rem;
+  font-size: 20px;
+}
+
+.subopt:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+input {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.dis {
+  display: none;
+}
+
+.title {
+  color: #6744a1;
+  font-weight: 800;
+}
+
+.inv {
+  opacity: 0;
+}
+
+.disNone {
+  display: none;
 }

@@ -7,6 +7,7 @@ const SessionDataScheme = mongoose.Schema({
   },
   title: {
     type: String,
+    default: "Session",
   },
   date: {
     type: Date,

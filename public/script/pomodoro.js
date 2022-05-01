@@ -8,6 +8,7 @@ const minutes = document.querySelector(".minutes");
 const seconds = document.querySelector(".seconds");
 const warning = document.querySelector(".warning");
 const motivation = document.querySelector(".motivation");
+const completeMess = document.querySelector(".complete");
 
 const motivationMessages = [
   "Good Job!",
@@ -43,6 +44,28 @@ const loadSession = async function () {
 
     timeLeft = Math.round((finalTime - now) / 1000);
 
+    if (timeLeft <= 0) {
+      minutes.focus();
+      minutes.value = "60";
+      seconds.value = "00";
+
+      await fetch("http://localhost:3000/deleteSession", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      await fetch("http://localhost:3000/finalsession", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      return;
+    }
+
     startPomodoro.textContent = "Reset";
 
     Counter.start();
@@ -75,7 +98,8 @@ const countDown = async function (stop) {
 
   if (minutesToShow === "00" && secondsToShow === "00") {
     Counter.stop();
-
+    motivation.textContent = "";
+    completeMess.style.display = "block";
     await fetch("http://localhost:3000/deleteSession", {
       method: "DELETE",
       headers: {
@@ -95,6 +119,7 @@ const countDown = async function (stop) {
 startPomodoro.addEventListener("click", async function () {
   if (this.textContent === "Reset") {
     motivation.textContent = "";
+    completeMess.style.display = "none";
     this.textContent = "Start";
     await fetch("http://localhost:3000/finalsession", {
       method: "DELETE",
@@ -181,7 +206,7 @@ const animateLogo = () => {
       this.style.cursor = "default";
     });
     letter.addEventListener("mouseleave", function (event) {
-      this.style.color = "#eeeeee";
+      this.style.color = "#C164CF";
     });
   });
 };

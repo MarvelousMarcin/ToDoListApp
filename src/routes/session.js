@@ -48,7 +48,10 @@ finalSessionRoute.delete("/finalsession", auth, async (req, res) => {
 });
 
 finalSessionRoute.get("/finalsession", auth, async (req, res) => {
-  const sessions = await SessionData.find({ user: req.user._id }).sort({
+  const sessions = await SessionData.find({
+    user: req.user._id,
+    completed: true,
+  }).sort({
     date: -1,
   });
 
@@ -57,6 +60,34 @@ finalSessionRoute.get("/finalsession", auth, async (req, res) => {
   }
 
   res.send(sessions);
+});
+
+finalSessionRoute.delete("/session", auth, async (req, res) => {
+  if (!req.body) {
+    return res.status(400).send();
+  }
+  try {
+    await SessionData.deleteOne({ _id: req.body._id });
+    res.send();
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+finalSessionRoute.patch("/session", auth, async (req, res) => {
+  if (!req.body) {
+    return res.status(400).send();
+  }
+  try {
+    const sess = await SessionData.findOneAndUpdate(
+      { _id: req.body._id },
+      { title: req.body.title }
+    );
+    sess.save();
+    res.send();
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
 module.exports = finalSessionRoute;
